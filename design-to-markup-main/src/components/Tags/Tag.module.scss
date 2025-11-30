@@ -1,0 +1,17 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/breakpoints' as *;
+
+.tag_root {
+  background: $color-light-green;
+  color: $color-link;
+  height: 48px;
+  padding: 14px 22px;
+  border-radius: 1000px;
+  @include flex-center;
+  @include typography-link;
+
+  @include max-lg {
+    height: 45px;
+  }
+}

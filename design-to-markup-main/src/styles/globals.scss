@@ -3,10 +3,7 @@
 @use './mixins' as *;
 @use './breakpoints' as *;
 
-// ==========================================
 // CSS Reset & Normalization
-// ==========================================
-
 *,
 *::before,
 *::after {
@@ -31,42 +28,15 @@ body {
   margin: 0;
   padding: 0;
   font-family: $font-family-base;
-  // font-size: $font-size-base;
-  // font-weight: $font-weight-regular;
-  // line-height: $line-height-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
   color: $color-link;
   background-color: $color-light-background;
   overflow-x: hidden;
   -webkit-tap-highlight-color: transparent;
 }
 
-// ==========================================
 // Typography Reset
-// ==========================================
-h1,
-.typo-h1 {
-  @include typography-heading1;
-}
-
-h2,
-.typo-h2 {
-  @include typography-heading2;
-}
-
-h3,
-.typo-h3 {
-  @include typography-heading3;
-}
-
-.typo-paragraphy {
-  @include typography-paragraph;
-}
-.typo-link {
-  @include typography-link;
-}
-.typo-caption {
-  @include typography-caption;
-}
 .text-color-link {
   color: $color-link;
 }
@@ -111,10 +81,7 @@ ol {
   list-style: none;
 }
 
-// ==========================================
 // Form Elements Reset
-// ==========================================
-
 button,
 input,
 select,
@@ -163,10 +130,7 @@ textarea {
   min-height: 100px;
 }
 
-// ==========================================
 // Media Elements
-// ==========================================
-
 img,
 picture,
 video,
@@ -185,7 +149,7 @@ img {
 .container {
   @include container;
 
-  @include max-md {
+  @include max-lg {
     @include container($max-width-mobile);
   }
 }
@@ -203,18 +167,13 @@ img {
   text-align: right;
 }
 
-// ==========================================
 // Focus & Selection Styles
-// ==========================================
-
 :focus-visible {
   outline: 2px solid $color-green;
   outline-offset: 2px;
 }
 
-// ==========================================
 // Animations
-// ==========================================
 
 @keyframes fadeIn {
   from {
@@ -303,4 +262,25 @@ img {
 
 .scale-in {
   animation: scaleIn $transition-duration-base $transition-easing-ease-out;
+}
+
+.typo-h1 {
+  @include typography-heading1;
+}
+.typo-h2 {
+  @include typography-heading2;
+}
+
+.typo-h3 {
+  @include typography-heading3;
+}
+
+.typo-paragraphy {
+  @include typography-paragraph;
+}
+.typo-link {
+  @include typography-link;
+}
+.typo-caption {
+  @include typography-caption;
 }

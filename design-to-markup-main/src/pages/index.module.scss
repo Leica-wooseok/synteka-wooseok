@@ -13,4 +13,66 @@
 
 .section {
   // section 스타일 작성
+  padding-top: 120px;
+}
+.section_container_inner {
+  @include flex-column-center;
+}
+.hero_section {
+  padding-top: 130px;
+
+  &_title_box {
+    gap: 24px;
+    @include flex-column-center;
+  }
+}
+.section_title_box {
+  gap: 24px;
+  white-space: pre-line;
+  text-align: center;
+  @include flex-column-center;
+}
+.hero_section_image_box {
+  margin-top: 100px;
+  position: relative;
+  width: 100%;
+  max-width: 907px;
+  max-height: 502px;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 37.85%,
+      rgba(255, 255, 255, 0.5) 71.71%,
+      #ffffff 99.2%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero_section_image {
+    max-width: 100%;
+  }
+
+  @include max-lg {
+    margin-top: 40px;
+    max-width: 270px;
+    max-height: 473px;
+
+    &::after {
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) calc(29.53% * 473 / 270),
+        rgba(255, 255, 255, 0.5) calc(55.93% * 473 / 270),
+        #ffffff calc(77.25% * 473 / 270)
+      );
+    }
+  }
 }
