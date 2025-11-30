@@ -43,6 +43,39 @@ body {
 // ==========================================
 // Typography Reset
 // ==========================================
+h1,
+.typo-h1 {
+  @include typography-heading1;
+}
+
+h2,
+.typo-h2 {
+  @include typography-heading2;
+}
+
+h3,
+.typo-h3 {
+  @include typography-heading3;
+}
+
+.typo-paragraphy {
+  @include typography-paragraph;
+}
+.typo-link {
+  @include typography-link;
+}
+.typo-caption {
+  @include typography-caption;
+}
+.text-color-link {
+  color: $color-link;
+}
+.text-color-paragraph {
+  color: $color-paragraph;
+}
+.text-color-caption {
+  color: $color-caption;
+}
 
 h1,
 h2,

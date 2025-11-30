@@ -2,33 +2,68 @@
 // Breakpoints
 // ==========================================
 
+/// 매우 작은 화면 크기 (375px)
 $breakpoint-xs: 375px;
-$breakpoint-sm: 430px; // Mobile max
-$breakpoint-md: 768px; // Tablet
-$breakpoint-lg: 1024px; // Desktop
+
+/// 작은 화면 크기 - 모바일 최대 크기 (430px)
+$breakpoint-sm: 430px;
+
+/// 중간 화면 크기 - 태블릿 (768px)
+$breakpoint-md: 768px;
+
+/// 큰 화면 크기 - 데스크톱 (1024px)
+$breakpoint-lg: 1024px;
 
 // ==========================================
 // Media Query Mixins
 // ==========================================
 
+/// 매우 작은 화면 크기 이하에서만 스타일을 적용합니다 (374px 이하).
+/// Desktop First 접근 방식으로, 큰 화면에서 작은 화면으로 내려갈 때 사용합니다.
+/// @content - 적용할 스타일
+/// @example
+///   @include max-xs {
+///     font-size: 12px;
+///   }
 @mixin max-xs {
   @media (max-width: #{$breakpoint-xs - 1px}) {
     @content;
   }
 }
 
+/// 작은 화면 크기 이하에서만 스타일을 적용합니다 (429px 이하, 모바일).
+/// Desktop First 접근 방식으로, 큰 화면에서 작은 화면으로 내려갈 때 사용합니다.
+/// @content - 적용할 스타일
+/// @example
+///   @include max-sm {
+///     padding: 8px;
+///   }
 @mixin max-sm {
   @media (max-width: #{$breakpoint-sm - 1px}) {
     @content;
   }
 }
 
+/// 중간 화면 크기 이하에서만 스타일을 적용합니다 (767px 이하, 태블릿 이하).
+/// Desktop First 접근 방식으로, 큰 화면에서 작은 화면으로 내려갈 때 사용합니다.
+/// @content - 적용할 스타일
+/// @example
+///   @include max-md {
+///     flex-direction: column;
+///   }
 @mixin max-md {
   @media (max-width: #{$breakpoint-md - 1px}) {
     @content;
   }
 }
 
+/// 큰 화면 크기 이하에서만 스타일을 적용합니다 (1023px 이하, 데스크톱 이하).
+/// Desktop First 접근 방식으로, 큰 화면에서 작은 화면으로 내려갈 때 사용합니다.
+/// @content - 적용할 스타일
+/// @example
+///   @include max-lg {
+///     max-width: 100%;
+///   }
 @mixin max-lg {
   @media (max-width: #{$breakpoint-lg - 1px}) {
     @content;

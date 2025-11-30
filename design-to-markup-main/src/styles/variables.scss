@@ -66,6 +66,53 @@ $letter-spacing-01: -0.01em;
 $letter-spacing-00: 0;
 
 // ==========================================
+// Typography Variants
+// ==========================================
+
+// Heading 1
+$heading1-font-size-desktop: $font-size-3xl; // 48px
+$heading1-line-height: $line-height-90; // 90
+$heading1-letter-spacing: $letter-spacing-03; // -0.03em
+$heading1-font-weight: $font-weight-bold; // 700
+$heading1-font-size-mobile: $font-size-2xl; // 28px
+
+// Heading 2
+$heading2-font-size-desktop: $font-size-xl; // 22px
+$heading2-line-height: $line-height-105; // 1.05
+$heading2-letter-spacing: $letter-spacing-04; // -0.04em
+$heading2-font-weight: $font-weight-bold; // 700
+$heading2-font-size-mobile: $font-size-md; // 15px
+
+// Heading 3
+$heading3-font-size-desktop: $font-size-lg; // 18px
+$heading3-line-height: $line-height-100; // 1
+$heading3-letter-spacing: $letter-spacing-03; // -0.03em
+$heading3-font-weight: $font-weight-bold; // 700
+$heading3-font-size-mobile: $font-size-sm; // 14px
+
+// Paragraph
+$paragraph-font-size-desktop: $font-size-lg; // 18px
+$paragraph-line-height: $line-height-140; // 1.4
+$paragraph-letter-spacing: $letter-spacing-05; // -0.05em
+$paragraph-font-weight: $font-weight-regular; // 400
+$paragraph-font-size-mobile: $font-size-sm; // 14px
+
+// Link
+$link-font-size-desktop: $font-size-sm; // 14px
+$link-line-height: $line-height-140; // 1.4
+$link-letter-spacing: $letter-spacing-025; // -0.025em
+$link-font-weight: $font-weight-bold; // 700
+$link-font-size-mobile: $font-size-xs; // 12px
+
+// Caption
+$caption-font-size-desktop: $font-size-xs; // 12px
+$caption-line-height: $line-height-140; // 1.4
+$caption-letter-spacing: $letter-spacing-01; // -0.01em
+$caption-font-weight: $font-weight-regular; // 400
+$caption-font-size-mobile: $font-size-xxs; // 10px
+$caption-letter-spacing-mobile: $letter-spacing-03; // -0.03em
+
+// ==========================================
 // 레이아웃
 // ==========================================
 

@@ -42,6 +42,74 @@
 // Typography Mixins
 // ==========================================
 
+// Typography Variants
+@mixin typography-heading1 {
+  font-size: $heading1-font-size-desktop;
+  line-height: $heading1-line-height;
+  letter-spacing: $heading1-letter-spacing;
+  font-weight: $heading1-font-weight;
+
+  @include max-md {
+    font-size: $heading1-font-size-mobile;
+  }
+}
+
+@mixin typography-heading2 {
+  font-size: $heading2-font-size-desktop;
+  line-height: $heading2-line-height;
+  letter-spacing: $heading2-letter-spacing;
+  font-weight: $heading2-font-weight;
+
+  @include max-md {
+    font-size: $heading2-font-size-mobile;
+  }
+}
+
+@mixin typography-heading3 {
+  font-size: $heading3-font-size-desktop;
+  line-height: $heading3-line-height;
+  letter-spacing: $heading3-letter-spacing;
+  font-weight: $heading3-font-weight;
+
+  @include max-md {
+    font-size: $heading3-font-size-mobile;
+  }
+}
+
+@mixin typography-paragraph {
+  font-size: $paragraph-font-size-desktop;
+  line-height: $paragraph-line-height;
+  letter-spacing: $paragraph-letter-spacing;
+  font-weight: $paragraph-font-weight;
+
+  @include max-md {
+    font-size: $paragraph-font-size-mobile;
+  }
+}
+
+@mixin typography-link {
+  font-size: $link-font-size-desktop;
+  line-height: $link-line-height;
+  letter-spacing: $link-letter-spacing;
+  font-weight: $link-font-weight;
+
+  @include max-md {
+    font-size: $link-font-size-mobile;
+  }
+}
+
+@mixin typography-caption {
+  font-size: $caption-font-size-desktop;
+  line-height: $caption-line-height;
+  letter-spacing: $caption-letter-spacing;
+  font-weight: $caption-font-weight;
+
+  @include max-md {
+    font-size: $caption-font-size-mobile;
+    letter-spacing: $caption-letter-spacing-mobile;
+  }
+}
+
 // Text Truncation
 @mixin text-ellipsis {
   overflow: hidden;
