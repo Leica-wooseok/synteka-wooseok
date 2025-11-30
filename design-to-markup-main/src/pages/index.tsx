@@ -3,15 +3,21 @@ import SectionTitleBox from '@/components/SectionTitleBox/SectionTitleBox';
 import Tag from '@/components/Tags/Tag';
 import { BREAKPOINT_SM } from '@/constants/breakpoints';
 import useDebounceWindowWidth from '@/hooks/useDebounceWindowWidth';
+import useVideoAutoplay from '@/hooks/useVideoAutoplay';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { useEffect, useRef } from 'react';
 import styles from './index.module.scss';
 
 const HERO_CONTENT = {
   tag: 'Syntekabio',
   title: '이 페이지는 테스트 중입니다',
   paragraph: '면접 과제용으로 제작된 샘플 페이지입니다.',
+} as const;
+
+const VIDEO_SECTION_CONTENT = {
+  title: '테스트용 영상 단락',
+  paragraph: '면접 과제용으로 제작된 샘플 영상 단락입니다. \n 사용자가 해당 단락이 화면에 보일 경우 영상이 재생되게 구현하세요.',
+  videoSrc: '/video/main.mp4',
 } as const;
 
 const HERO_IMAGE = {
@@ -66,39 +72,7 @@ function HeroSection() {
 }
 
 function VideoSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const hasPlayedRef = useRef(false);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasPlayedRef.current) {
-            video.play().catch((error) => {
-              console.error('Video playback failed:', error);
-            });
-          }
-        });
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(video);
-
-    const handleEnded = () => {
-      hasPlayedRef.current = true;
-    };
-
-    video.addEventListener('ended', handleEnded);
-
-    return () => {
-      observer.disconnect();
-      video.removeEventListener('ended', handleEnded);
-    };
-  }, []);
+  const videoRef = useVideoAutoplay({ threshold: 0.5, playOnce: true });
 
   return (
     <section className={clsx(styles.section, styles.video_section)}>
@@ -106,12 +80,18 @@ function VideoSection() {
         <div className={styles.section_container_inner}>
           <SectionTitleBox
             titleTag='h2'
-            title={'테스트용 영상 단락'}
-            paragraph={`면접 과제용으로 제작된 샘플 영상 단락입니다. \n 사용자가 해당 단락이 화면에 보일 경우 영상이 재생되게 구현하세요.`}
+            title={VIDEO_SECTION_CONTENT.title}
+            paragraph={VIDEO_SECTION_CONTENT.paragraph}
           />
           <div className={styles.video_box_wrap}>
             <div className={styles.video_box}>
-              <video ref={videoRef} src='/video/main.mp4' muted playsInline preload='metadata'>
+              <video
+                ref={videoRef}
+                src={VIDEO_SECTION_CONTENT.videoSrc}
+                muted
+                playsInline
+                preload='metadata'
+              >
                 Your browser does not support the video tag.
               </video>
             </div>
