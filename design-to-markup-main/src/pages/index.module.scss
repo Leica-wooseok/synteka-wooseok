@@ -7,43 +7,6 @@
   min-height: 100vh;
 }
 
-.header {
-  width: 100%;
-  position: sticky;
-  top: 0;
-  height: 56px;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  background: $color-light-background;
-
-  h1 {
-    margin-right: 40px;
-  }
-}
-
-.nav {
-  padding: 0 24px;
-
-  .nav_list {
-    gap: 27px;
-    @include flex-center;
-  }
-  .nav_list_item {
-    color: $color-link;
-    @include typography-link;
-
-    & > a {
-      color: inherit;
-    }
-  }
-}
-.header_button_group {
-  margin-left: auto;
-  @include flex-center;
-  gap: 16px;
-}
-
 .main {
   // main 스타일 작성
 }
