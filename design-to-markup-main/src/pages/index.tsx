@@ -7,6 +7,42 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import styles from './index.module.scss';
 
+const HERO_CONTENT = {
+  tag: 'Syntekabio',
+  title: '이 페이지는 테스트 중입니다',
+  paragraph: '면접 과제용으로 제작된 샘플 페이지입니다.',
+} as const;
+
+const HERO_IMAGE = {
+  mobile: {
+    src: '/images/hero-image_mobile.png',
+    width: 270,
+    height: 541,
+  },
+  desktop: {
+    src: '/images/hero-image_desktop.png',
+    width: 907,
+    height: 644,
+  },
+  alt: '히어로 섹션 이미지입니다',
+} as const;
+
+function HeroImage({ isMobile }: { isMobile: boolean }) {
+  const image = isMobile ? HERO_IMAGE.mobile : HERO_IMAGE.desktop;
+
+  return (
+    <Image
+      key={isMobile ? 'mobile' : 'desktop'}
+      className={styles.hero_section_image}
+      src={image.src}
+      width={image.width}
+      height={image.height}
+      alt={HERO_IMAGE.alt}
+      priority
+    />
+  );
+}
+
 function HeroSection() {
   const windowWidth = useDebounceWindowWidth();
   const isMobile = windowWidth < BREAKPOINT_LG;
@@ -16,30 +52,11 @@ function HeroSection() {
       <div className='container'>
         <div className={styles.section_container_inner}>
           <div className={styles.hero_section_title_box}>
-            <Tag>Syntekabio</Tag>
-            <SectionTitleBox
-              title='이 페이지는 테스트 중입니다'
-              paragraph='면접 과제용으로 제작된 샘플 페이지입니다.'
-            />
+            <Tag>{HERO_CONTENT.tag}</Tag>
+            <SectionTitleBox title={HERO_CONTENT.title} paragraph={HERO_CONTENT.paragraph} />
           </div>
           <div className={styles.hero_section_image_box}>
-            {isMobile ? (
-              <Image
-                className={styles.hero_section_image}
-                src={'/images/hero-image_mobile.png'}
-                width={270}
-                height={541}
-                alt='히어로 섹션 이미지입니다'
-              />
-            ) : (
-              <Image
-                className={styles.hero_section_image}
-                src={'/images/hero-image_desktop.png'}
-                width={907}
-                height={644}
-                alt='히어로 섹션 이미지입니다'
-              />
-            )}
+            <HeroImage isMobile={isMobile} />
           </div>
         </div>
       </div>

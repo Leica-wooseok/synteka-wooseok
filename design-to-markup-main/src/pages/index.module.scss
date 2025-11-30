@@ -53,6 +53,7 @@
 
   .hero_section_image {
     max-width: 100%;
+    @include fade-in;
   }
 
   @include max-lg {
