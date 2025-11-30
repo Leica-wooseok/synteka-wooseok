@@ -31,7 +31,7 @@
   position: relative;
   width: 100%;
   max-width: 907px;
-  max-height: 502px;
+  aspect-ratio: 907 / 502;
   overflow: hidden;
 
   &::after {
@@ -57,9 +57,12 @@
   }
 
   @include max-lg {
+    padding: 0 16px;
+  }
+  @include max-sm {
     margin-top: 40px;
-    max-width: 270px;
-    max-height: 473px;
+    max-width: calc(270px + 32px);
+    aspect-ratio: 302 / 473;
 
     &::after {
       background: linear-gradient(
@@ -69,5 +72,26 @@
         #ffffff calc(77.25% * 473 / 270)
       );
     }
+  }
+}
+
+.video_section {
+  padding-top: 120px;
+}
+.video_box_wrap {
+  @include max-lg {
+    padding: 0 16px;
+  }
+}
+.video_box {
+  margin-top: 80px;
+  border-radius: 30px;
+  max-width: 892px;
+  aspect-ratio: 892 / 504;
+  overflow: hidden;
+
+  @include max-lg {
+    margin-top: 40px;
+    aspect-ratio: 361 / 204;
   }
 }

@@ -1,8 +1,14 @@
 @use '@/styles/mixins' as *;
+@use '@/styles/breakpoints' as *;
 
 .section_title_box {
   gap: 24px;
   white-space: pre-line;
   text-align: center;
+  word-break: keep-all;
   @include flex-column-center;
+
+  @include max-lg {
+    padding: 0 16px;
+  }
 }

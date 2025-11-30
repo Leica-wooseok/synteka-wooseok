@@ -152,7 +152,7 @@ img {
 .container {
   @include container;
 
-  @include max-lg {
+  @include max-sm {
     @include container($max-width-mobile);
   }
 }

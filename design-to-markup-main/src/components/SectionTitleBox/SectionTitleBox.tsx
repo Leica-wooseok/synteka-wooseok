@@ -4,6 +4,7 @@ import styles from './SectionTitleBox.module.scss';
 type SectionTitleBoxProps = {
   title: string;
   paragraph: string;
+  titleTag?: 'h1' | 'h2';
   titleColor?: string;
   paragraphColor?: string;
 };
@@ -11,12 +12,13 @@ type SectionTitleBoxProps = {
 export default function SectionTitleBox({
   title,
   paragraph,
+  titleTag: TitleTag = 'h1',
   titleColor,
   paragraphColor,
 }: SectionTitleBoxProps) {
   return (
     <div className={styles.section_title_box}>
-      <h1 className={clsx('typo-h1', titleColor || 'text-color-headline')}>{title}</h1>
+      <TitleTag className={clsx('typo-h1', titleColor || 'text-color-headline')}>{title}</TitleTag>
       <p className={clsx('typo-paragraph', paragraphColor || 'text-color-paragraph')}>
         {paragraph}
       </p>

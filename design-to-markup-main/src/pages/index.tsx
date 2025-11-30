@@ -1,10 +1,11 @@
 import Header from '@/components/Header/Header';
 import SectionTitleBox from '@/components/SectionTitleBox/SectionTitleBox';
 import Tag from '@/components/Tags/Tag';
-import { BREAKPOINT_LG } from '@/constants/breakpoints';
+import { BREAKPOINT_SM } from '@/constants/breakpoints';
 import useDebounceWindowWidth from '@/hooks/useDebounceWindowWidth';
 import clsx from 'clsx';
 import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 import styles from './index.module.scss';
 
 const HERO_CONTENT = {
@@ -45,7 +46,7 @@ function HeroImage({ isMobile }: { isMobile: boolean }) {
 
 function HeroSection() {
   const windowWidth = useDebounceWindowWidth();
-  const isMobile = windowWidth < BREAKPOINT_LG;
+  const isMobile = windowWidth < BREAKPOINT_SM;
 
   return (
     <section className={clsx(styles.section, styles.hero_section)}>
@@ -64,6 +65,63 @@ function HeroSection() {
   );
 }
 
+function VideoSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const hasPlayedRef = useRef(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasPlayedRef.current) {
+            video.play().catch((error) => {
+              console.error('Video playback failed:', error);
+            });
+          }
+        });
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(video);
+
+    const handleEnded = () => {
+      hasPlayedRef.current = true;
+    };
+
+    video.addEventListener('ended', handleEnded);
+
+    return () => {
+      observer.disconnect();
+      video.removeEventListener('ended', handleEnded);
+    };
+  }, []);
+
+  return (
+    <section className={clsx(styles.section, styles.video_section)}>
+      <div className='container'>
+        <div className={styles.section_container_inner}>
+          <SectionTitleBox
+            titleTag='h2'
+            title={'테스트용 영상 단락'}
+            paragraph={`면접 과제용으로 제작된 샘플 영상 단락입니다. \n 사용자가 해당 단락이 화면에 보일 경우 영상이 재생되게 구현하세요.`}
+          />
+          <div className={styles.video_box_wrap}>
+            <div className={styles.video_box}>
+              <video ref={videoRef} src='/video/main.mp4' muted playsInline preload='metadata'>
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <div className={styles.wrap}>
@@ -71,11 +129,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <HeroSection />
-        <section className={styles.section}>
-          <div className='container'>
-            <div className={styles.section_container_inner}>Video</div>
-          </div>
-        </section>
+        <VideoSection />
         <section className={styles.section}>
           <div className='container'>image tab</div>
         </section>
