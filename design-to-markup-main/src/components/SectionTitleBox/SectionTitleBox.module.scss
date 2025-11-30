@@ -1,0 +1,8 @@
+@use '@/styles/mixins' as *;
+
+.section_title_box {
+  gap: 24px;
+  white-space: pre-line;
+  text-align: center;
+  @include flex-column-center;
+}

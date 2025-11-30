@@ -26,12 +26,6 @@
     @include flex-column-center;
   }
 }
-.section_title_box {
-  gap: 24px;
-  white-space: pre-line;
-  text-align: center;
-  @include flex-column-center;
-}
 .hero_section_image_box {
   margin-top: 100px;
   position: relative;
