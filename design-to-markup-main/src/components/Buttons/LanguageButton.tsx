@@ -3,8 +3,6 @@ import { forwardRef, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './LanguageButton.module.scss';
 import ArrowDownIcon from '/public/images/icons/icon-arrow_down.svg';
-import DotOFFIcon from '/public/images/icons/icon-dot_off.svg';
-import DotOnIcon from '/public/images/icons/icon-dot_on.svg';
 import EarthIcon from '/public/images/icons/icon-earth.svg';
 
 type LangType = 'ko' | 'en';
@@ -99,7 +97,6 @@ const LanguagePopover = forwardRef<HTMLDivElement, LanguagePopoverProps>(
               close();
             }}
           >
-            {lang === opt.value ? <DotOnIcon /> : <DotOFFIcon />}
             {opt.label}
           </button>
         ))}
