@@ -27,10 +27,13 @@
   border-radius: 30px;
   max-width: 892px;
   aspect-ratio: 892 / 504;
+  @include aspect-ratio(892, 504);
+
   overflow: hidden;
 
   @include max-lg {
     margin-top: 40px;
     aspect-ratio: 361 / 204;
+    @include aspect-ratio(361, 204);
   }
 }

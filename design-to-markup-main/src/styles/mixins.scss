@@ -1,10 +1,6 @@
 @use './variables' as *;
 @use './breakpoints' as *;
 
-// ==========================================
-// Layout Mixins
-// ==========================================
-
 // Container
 @mixin container($max-width: $max-width-desktop) {
   width: 100%;
@@ -37,10 +33,6 @@
   align-items: center;
   justify-content: center;
 }
-
-// ==========================================
-// Typography Mixins
-// ==========================================
 
 // Typography Variants
 @mixin typography-heading1 {
@@ -125,10 +117,6 @@
   text-overflow: ellipsis;
 }
 
-// ==========================================
-// Accessibility Mixins
-// ==========================================
-
 // Focus Styles
 @mixin focus-visible($color: $color-green, $offset: 2px) {
   &:focus-visible {
@@ -140,10 +128,6 @@
     outline: none;
   }
 }
-
-// ==========================================
-// Interactive Element Mixins
-// ==========================================
 
 // Button Reset
 @mixin button-reset {
@@ -171,10 +155,6 @@
   }
 }
 
-// ==========================================
-// Size Mixins
-// ==========================================
-
 @mixin size($width, $height: $width) {
   width: $width;
   height: $height;
@@ -188,10 +168,6 @@
   @include square($size);
   border-radius: $border-radius-full;
 }
-
-// ==========================================
-// Position Mixins
-// ==========================================
 
 @mixin absolute-center {
   position: absolute;
@@ -216,10 +192,6 @@
   left: 0;
 }
 
-// ==========================================
-// Animation Mixins
-// ==========================================
-
 @mixin fade-in($duration: $transition-duration-base) {
   animation: fadeIn $duration $transition-easing-ease-in-out;
 
@@ -232,25 +204,6 @@
     }
   }
 }
-
-@mixin slide-up($duration: $transition-duration-base, $distance: 20px) {
-  animation: slideUp $duration $transition-easing-ease-out;
-
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY($distance);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-// ==========================================
-// Image & Media Mixins
-// ==========================================
 
 @mixin img-fluid {
   max-width: 100%;
@@ -275,10 +228,6 @@
   object-fit: $fit;
   object-position: $position;
 }
-
-// ==========================================
-// Media Query Mixins
-// ==========================================
 
 // Reduced Motion (for accessibility)
 @mixin reduced-motion {

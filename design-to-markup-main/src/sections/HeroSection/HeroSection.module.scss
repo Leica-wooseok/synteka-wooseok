@@ -25,6 +25,7 @@
   width: 100%;
   max-width: 907px;
   aspect-ratio: 907 / 655;
+  @include aspect-ratio(907, 655);
   overflow: hidden;
 
   &::after {
@@ -45,9 +46,24 @@
     z-index: 1;
   }
 
-  .hero_section_image {
+  .hero_section_image_mobile {
+    display: none;
     max-width: 100%;
     @include fade-in;
+
+    @include max-sm {
+      display: block;
+    }
+  }
+
+  .hero_section_image_desktop {
+    display: block;
+    max-width: 100%;
+    @include fade-in;
+
+    @include max-sm {
+      display: none;
+    }
   }
 
   @include max-lg {
@@ -57,7 +73,7 @@
     margin-top: 40px;
     max-width: calc(270px + 32px);
     aspect-ratio: 302 / 473;
-
+    @include aspect-ratio(302, 473);
     &::after {
       background: linear-gradient(
         180deg,

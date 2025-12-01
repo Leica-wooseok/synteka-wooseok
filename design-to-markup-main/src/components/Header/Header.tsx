@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { throttle } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import styles from './Header.module.scss';
 import CloseIcon from '/public/images/icons/icon-close.svg';
 import MenuIcon from '/public/images/icons/icon-menu.svg';
@@ -105,12 +105,16 @@ function MobilePopover({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
 
 export default function Header() {
   const windowWidth = useDebounceWindowWidth();
+  const [mounted, setMounted] = useState(false);
   const isMobileView = windowWidth < BREAKPOINT_LG;
   const [mobilePopoverOpen, setMobilePopoverOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false); // New state for scroll
+  const [scrolled, setScrolled] = useState(false);
 
-  // New useEffect for scroll detection
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useLayoutEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
         setScrolled(true);
@@ -119,8 +123,7 @@ export default function Header() {
       }
     };
 
-    const throttledHandleScroll = throttle(handleScroll, 100); // Throttle the scroll handler
-
+    const throttledHandleScroll = throttle(handleScroll, 100);
     window.addEventListener('scroll', throttledHandleScroll);
     return () => {
       window.removeEventListener('scroll', throttledHandleScroll);
@@ -130,7 +133,7 @@ export default function Header() {
   const handleToggleMobileMenu = () => setMobilePopoverOpen((prev) => !prev);
   const handleCloseMobileMenu = () => setMobilePopoverOpen(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (mobilePopoverOpen) {
       document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
@@ -155,12 +158,20 @@ export default function Header() {
     >
       <Logo />
 
-      {isMobileView ? (
+      {!mounted ? (
+        // SSR 및 초기 렌더링: Desktop Nav 렌더링
+        <>
+          <DesktopNav />
+          <DesktopButtonGroup isMobile={false} />
+        </>
+      ) : isMobileView ? (
+        // 클라이언트 마운트 후: Mobile View
         <>
           <MobileMenuButton isOpen={mobilePopoverOpen} onClick={handleToggleMobileMenu} />
           <MobilePopover isOpen={mobilePopoverOpen} onClose={handleCloseMobileMenu} />
         </>
       ) : (
+        // 클라이언트 마운트 후: Desktop View
         <>
           <DesktopNav />
           <DesktopButtonGroup isMobile={false} />

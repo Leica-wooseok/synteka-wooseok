@@ -1,7 +1,5 @@
 import SectionTitleBox from '@/components/SectionTitleBox/SectionTitleBox';
 import Tag from '@/components/Tags/Tag';
-import { BREAKPOINT_SM } from '@/constants/breakpoints';
-import useDebounceWindowWidth from '@/hooks/useDebounceWindowWidth';
 import clsx from 'clsx';
 import Image from 'next/image';
 
@@ -27,26 +25,30 @@ const HERO_IMAGE = {
   alt: '히어로 섹션 이미지입니다',
 } as const;
 
-function HeroImage({ isMobile }: { isMobile: boolean }) {
-  const image = isMobile ? HERO_IMAGE.mobile : HERO_IMAGE.desktop;
-
+function HeroImage() {
   return (
-    <Image
-      key={isMobile ? 'mobile' : 'desktop'}
-      className={styles.hero_section_image}
-      src={image.src}
-      width={image.width}
-      height={image.height}
-      alt={HERO_IMAGE.alt}
-      priority
-    />
+    <>
+      <Image
+        className={styles.hero_section_image_mobile}
+        src={HERO_IMAGE.mobile.src}
+        width={HERO_IMAGE.mobile.width}
+        height={HERO_IMAGE.mobile.height}
+        alt={HERO_IMAGE.alt}
+        priority
+      />
+      <Image
+        className={styles.hero_section_image_desktop}
+        src={HERO_IMAGE.desktop.src}
+        width={HERO_IMAGE.desktop.width}
+        height={HERO_IMAGE.desktop.height}
+        alt={HERO_IMAGE.alt}
+        priority
+      />
+    </>
   );
 }
 
 export default function HeroSection() {
-  const windowWidth = useDebounceWindowWidth();
-  const isMobile = windowWidth < BREAKPOINT_SM;
-
   return (
     <section className={clsx(styles.section, styles.hero_section)}>
       <div className='container'>
@@ -61,7 +63,7 @@ export default function HeroSection() {
             />
           </div>
           <div className={styles.hero_section_image_box}>
-            <HeroImage isMobile={isMobile} />
+            <HeroImage />
           </div>
         </div>
       </div>

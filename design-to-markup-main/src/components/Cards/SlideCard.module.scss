@@ -17,6 +17,7 @@
     width: 230px;
     .card_image_box {
       aspect-ratio: 230 / 218;
+      @include aspect-ratio(230, 218);
     }
     .card_info_box {
       padding: 18px;
@@ -28,6 +29,7 @@
 .card_image_box {
   width: 100%;
   aspect-ratio: 460 / 436;
+  @include aspect-ratio(460, 436);
   overflow: hidden;
   position: relative;
 }

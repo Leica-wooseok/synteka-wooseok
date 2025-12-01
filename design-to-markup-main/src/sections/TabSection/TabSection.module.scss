@@ -32,10 +32,12 @@
   width: 100%;
   max-width: 892px;
   aspect-ratio: 892 / 620;
+  @include aspect-ratio(892, 620);
 
   @include max-sm {
     margin-top: 40px;
     aspect-ratio: 361 / (385 - 32);
+    @include aspect-ratio(361, (385 - 32));
   }
 }
 
@@ -66,9 +68,12 @@
   max-width: 892px;
   overflow: hidden;
   aspect-ratio: 892 / 620;
+  @include aspect-ratio(892, 620);
+
   @include max-sm {
     max-width: 361px;
     aspect-ratio: 361 / 385;
+    @include aspect-ratio(361, 385);
   }
 }
 
