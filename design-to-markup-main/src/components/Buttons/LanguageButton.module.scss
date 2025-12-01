@@ -7,9 +7,13 @@
   height: 36px;
   gap: 4px;
   color: $color-paragraph;
-  background: $color-white;
   border: 0;
+  background: transparent;
   @include flex-center;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   span {
     font-weight: 500;
@@ -30,7 +34,8 @@
   z-index: 99;
   border-radius: 12px;
   overflow: hidden;
-
+  background: $color-white;
+  border: 0;
   .language_popover_button {
     padding: 0 12px;
     width: 100%;
@@ -39,7 +44,13 @@
     align-items: center;
     gap: 6px;
     color: $color-paragraph;
+    background: transparent;
+    border: 0;
     @include typography-caption;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     &.active {
       background: $color-green;

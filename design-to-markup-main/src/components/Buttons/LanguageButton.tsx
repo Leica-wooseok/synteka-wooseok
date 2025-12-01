@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { forwardRef, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './LanguageButton.module.scss';
 import ArrowDownIcon from '/public/images/icons/icon-arrow_down.svg';
 import DotOFFIcon from '/public/images/icons/icon-dot_off.svg';
@@ -26,13 +27,12 @@ export default function LanguageButton() {
     if (open && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect();
       setPopoverPosition({
-        top: rect.bottom + window.scrollY,
-        left: rect.left + window.scrollX,
+        top: rect.bottom,
+        left: rect.left,
       });
     }
   }, [open]);
 
-  // Popover를 닫기 위한 외부 클릭 감지
   useEffect(() => {
     if (!open) return;
     function handleClick(e: MouseEvent) {
@@ -55,15 +55,18 @@ export default function LanguageButton() {
         <span>{langDisplay}</span>
         <ArrowDownIcon style={{ transform: open ? 'rotate(-180deg)' : 'rotate(0)' }} />
       </button>
-      {open && popoverPosition && (
-        <LanguagePopover
-          ref={popoverRef}
-          position={popoverPosition}
-          lang={lang}
-          setLang={(l: LangType) => setLang(l)}
-          close={() => setOpen(false)}
-        />
-      )}
+      {open &&
+        popoverPosition &&
+        createPortal(
+          <LanguagePopover
+            ref={popoverRef}
+            position={popoverPosition}
+            lang={lang}
+            setLang={(l: LangType) => setLang(l)}
+            close={() => setOpen(false)}
+          />,
+          document.body,
+        )}
     </>
   );
 }
