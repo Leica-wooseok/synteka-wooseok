@@ -1,7 +1,6 @@
 import SectionTitleBox from '@/components/SectionTitleBox/SectionTitleBox';
 import TabButtonGroup from '@/components/TabButtonGroup/TabButtonGroup';
-import { BREAKPOINT_SM } from '@/constants/breakpoints';
-import useDebounceWindowWidth from '@/hooks/useDebounceWindowWidth';
+import useFadeInOnView from '@/hooks/useFadeInOnView';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -40,14 +39,11 @@ const TAB_CONTENT = [
 
 function TabImage({
   content,
-  isMobile,
   isActive,
 }: {
   content: (typeof TAB_CONTENT)[number];
-  isMobile: boolean;
   isActive: boolean;
 }) {
-  const image = isMobile ? content.image.mobile : content.image.desktop;
   return (
     <div
       className={clsx(styles.tab_content, {
@@ -56,12 +52,19 @@ function TabImage({
     >
       <div className={styles.tab_content_image_box}>
         <Image
-          key={isMobile ? 'mobile' : 'desktop'}
-          src={image.src}
+          src={content.image.desktop.src}
           alt={content.alt}
-          width={image.width}
-          height={image.height}
-          className={styles.tab_content_image}
+          width={content.image.desktop.width}
+          height={content.image.desktop.height}
+          className={clsx(styles.tab_content_image, styles.desktop_image)}
+          priority={isActive}
+        />
+        <Image
+          src={content.image.mobile.src}
+          alt={content.alt}
+          width={content.image.mobile.width}
+          height={content.image.mobile.height}
+          className={clsx(styles.tab_content_image, styles.mobile_image)}
           priority={isActive}
         />
       </div>
@@ -71,21 +74,24 @@ function TabImage({
 
 export default function TabSection() {
   const [activeTab, setActiveTab] = useState(1);
-  const windowWidth = useDebounceWindowWidth();
-  const isMobile = windowWidth < BREAKPOINT_SM;
+  const { elementRef, isVisible } = useFadeInOnView({ threshold: 0.2 });
 
   return (
     <section className={clsx(styles.section, styles.image_tab_section)}>
       <div className='container'>
-        <div className={styles.section_container_inner}>
+        <div className={clsx(styles.section_container_inner)}>
           <SectionTitleBox
             title='테스트용 탭 영역 단락 입니다'
             titleVariant='heading1'
             titleComponent='h2'
-            paragraph={`면접 과제용으로 제작된 샘플 탭 단락입니다. 
+            paragraph={`면접 과제용으로 제작된 샘플 탭 단락입니다.
  인터렉션, 코드 구조등을 자유롭게 구현하세요.`}
           />
-          <div className={styles.image_tab_wrap}>
+          <div
+            className={clsx(styles.image_tab_wrap, 'fade-in-container', {
+              'is-visible': isVisible,
+            })}
+          >
             <TabButtonGroup
               tabs={TAB_CONTENT}
               activeTab={activeTab}
@@ -93,12 +99,11 @@ export default function TabSection() {
               className={styles.tab_button_group_width}
             />
 
-            <div className={styles.tab_content_container}>
+            <div ref={elementRef} className={styles.tab_content_container}>
               {TAB_CONTENT.map((content) => (
                 <TabImage
                   key={content.id}
                   content={content}
-                  isMobile={isMobile}
                   isActive={activeTab === content.id}
                 />
               ))}

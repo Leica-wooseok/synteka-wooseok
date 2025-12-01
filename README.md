@@ -203,15 +203,7 @@ src/
   - 터치 제스처, 접근성, 크로스 브라우저 호환성 보장
   - 개발 시간 단축
 
-### 2. SCSS Modules vs Styled-components
-
-- **선택**: SCSS Modules
-- **이유**:
-  - 기존 SCSS 시스템 활용 (mixin, variable)
-  - 빌드 타임 최적화 (런타임 오버헤드 없음)
-  - 명확한 파일 구조
-
-### 3. Typography 컴포넌트 도입
+### 2. Typography 컴포넌트 도입
 
 - **선택**: 재사용 가능한 Typography 컴포넌트
 - **이유**:
@@ -219,7 +211,7 @@ src/
   - 유지보수성 향상
   - Semantic HTML 유연성
 
-### 4. Portal을 활용한 Popover
+### 3. Portal을 활용한 Popover
 
 - **선택**: React Portal
 - **이유**:

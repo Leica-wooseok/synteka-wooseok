@@ -1,5 +1,6 @@
 import SectionTitleBox from '@/components/SectionTitleBox/SectionTitleBox';
 import Tag from '@/components/Tags/Tag';
+import useFadeInOnView from '@/hooks/useFadeInOnView';
 import clsx from 'clsx';
 import Image from 'next/image';
 
@@ -49,10 +50,12 @@ function HeroImage() {
 }
 
 export default function HeroSection() {
+  const { elementRef, isVisible } = useFadeInOnView({ threshold: 0.2 });
+
   return (
     <section className={clsx(styles.section, styles.hero_section)}>
       <div className='container'>
-        <div className={styles.section_container_inner}>
+        <div className={clsx(styles.section_container_inner)}>
           <div className={styles.hero_section_title_box}>
             <Tag>{HERO_CONTENT.tag}</Tag>
             <SectionTitleBox
@@ -62,7 +65,12 @@ export default function HeroSection() {
               titleComponent='h1'
             />
           </div>
-          <div className={styles.hero_section_image_box}>
+          <div
+            className={clsx(styles.hero_section_image_box, 'fade-in-container', {
+              'is-visible': isVisible,
+            })}
+            ref={elementRef}
+          >
             <HeroImage />
           </div>
         </div>

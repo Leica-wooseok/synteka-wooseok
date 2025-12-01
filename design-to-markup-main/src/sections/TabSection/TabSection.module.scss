@@ -30,7 +30,7 @@
   margin-top: 60px;
   position: relative;
   width: 100%;
-  max-width: 892px;
+  max-width: calc(892px + 32px);
   aspect-ratio: 892 / 620;
   @include aspect-ratio(892, 620);
 
@@ -68,16 +68,32 @@
   max-width: 892px;
   overflow: hidden;
   aspect-ratio: 892 / 620;
-  @include aspect-ratio(892, 620);
+  // @include aspect-ratio(892, 620);
 
   @include max-sm {
     max-width: 361px;
     aspect-ratio: 361 / 385;
-    @include aspect-ratio(361, 385);
+    // @include aspect-ratio(361, 385);
   }
 }
 
 .tab_content_image {
   width: 100%;
   @include img-fluid;
+}
+
+.desktop_image {
+  display: block;
+
+  @include max-sm {
+    display: none;
+  }
+}
+
+.mobile_image {
+  display: none;
+
+  @include max-sm {
+    display: block;
+  }
 }

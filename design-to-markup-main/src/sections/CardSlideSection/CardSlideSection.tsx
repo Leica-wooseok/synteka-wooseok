@@ -56,14 +56,14 @@ export default function CardSlideSection() {
   return (
     <section className={clsx(styles.section, styles.card_slide_section)}>
       <div className='container'>
-        <div className={styles.section_container_inner}>
+        <div className={clsx(styles.section_container_inner)}>
           <SectionTitleBox
             title='테스트용 이미지 카드 단락입니다'
             titleVariant='heading1'
             titleComponent='h2'
             titleColor='caption'
             paragraphColor='caption'
-            paragraph={`면접 과제용으로 제작된 샘플 단락입니다. 
+            paragraph={`면접 과제용으로 제작된 샘플 단락입니다.
  인터렉션, 코드 구조등을 자유롭게 구현하세요. `}
           />
         </div>
