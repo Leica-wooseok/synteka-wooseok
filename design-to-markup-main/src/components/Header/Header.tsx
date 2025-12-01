@@ -3,6 +3,7 @@ import LanguageButton from '@/components/Buttons/LanguageButton';
 import { BREAKPOINT_LG } from '@/constants/breakpoints';
 import useDebounceWindowWidth from '@/hooks/useDebounceWindowWidth';
 import clsx from 'clsx';
+import { throttle } from 'lodash';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -106,6 +107,25 @@ export default function Header() {
   const windowWidth = useDebounceWindowWidth();
   const isMobileView = windowWidth < BREAKPOINT_LG;
   const [mobilePopoverOpen, setMobilePopoverOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false); // New state for scroll
+
+  // New useEffect for scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    const throttledHandleScroll = throttle(handleScroll, 100); // Throttle the scroll handler
+
+    window.addEventListener('scroll', throttledHandleScroll);
+    return () => {
+      window.removeEventListener('scroll', throttledHandleScroll);
+    };
+  }, []);
 
   const handleToggleMobileMenu = () => setMobilePopoverOpen((prev) => !prev);
   const handleCloseMobileMenu = () => setMobilePopoverOpen(false);
@@ -126,7 +146,13 @@ export default function Header() {
   }, [mobilePopoverOpen]);
 
   return (
-    <header className={clsx(styles.header, mobilePopoverOpen && styles.header_open)}>
+    <header
+      className={clsx(
+        styles.header,
+        mobilePopoverOpen && styles.header_open,
+        scrolled && !mobilePopoverOpen && styles.scroll_blur,
+      )}
+    >
       <Logo />
 
       {isMobileView ? (

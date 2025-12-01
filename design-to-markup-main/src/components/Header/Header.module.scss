@@ -23,8 +23,15 @@ $header-height: 56px;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05);
   }
 
+  &.scroll_blur {
+    background: rgba($color: $color-light-background, $alpha: 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
   &.header_open {
     box-shadow: none;
+    border-radius: 0;
+    position: fixed;
   }
   h1 {
     margin-right: 40px;

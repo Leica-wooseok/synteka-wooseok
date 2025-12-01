@@ -3733,6 +3733,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/lodash@npm:^4.17.21":
+  version: 4.17.21
+  resolution: "@types/lodash@npm:4.17.21"
+  checksum: 10/34920830a3bc82ba619cda05e606fef00c148a69b4f19f770645d2587ccdb8e42ef3ddfc174b7884c0c709fc0a1aeb48f7326da969bad12a1464a03efbbe414c
+  languageName: node
+  linkType: hard
+
 "@types/mdx@npm:^2.0.0":
   version: 2.0.13
   resolution: "@types/mdx@npm:2.0.13"
@@ -5672,6 +5679,7 @@ __metadata:
     "@storybook/react-webpack5": "npm:9.1.6"
     "@svgr/webpack": "npm:^8.1.0"
     "@types/jest": "npm:^29.5.14"
+    "@types/lodash": "npm:^4.17.21"
     "@types/node": "npm:^20.11.16"
     "@types/react": "npm:^18.2.53"
     "@types/react-dom": "npm:^18.2.18"
@@ -5686,6 +5694,7 @@ __metadata:
     husky: "npm:^9.0.11"
     jest: "npm:^29.7.0"
     lint-staged: "npm:^15.2.2"
+    lodash: "npm:^4.17.21"
     next: "npm:^14.2.3"
     postcss: "npm:^8.0.0"
     postcss-preset-env: "npm:^10.4.0"
