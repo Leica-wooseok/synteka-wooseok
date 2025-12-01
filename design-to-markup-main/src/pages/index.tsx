@@ -94,7 +94,12 @@ function HeroSection() {
         <div className={styles.section_container_inner}>
           <div className={styles.hero_section_title_box}>
             <Tag>{HERO_CONTENT.tag}</Tag>
-            <SectionTitleBox title={HERO_CONTENT.title} paragraph={HERO_CONTENT.paragraph} />
+            <SectionTitleBox
+              title={HERO_CONTENT.title}
+              paragraph={HERO_CONTENT.paragraph}
+              titleVariant='heading1'
+              titleComponent='h1'
+            />
           </div>
           <div className={styles.hero_section_image_box}>
             <HeroImage isMobile={isMobile} />
@@ -113,7 +118,8 @@ function VideoSection() {
       <div className='container'>
         <div className={styles.section_container_inner}>
           <SectionTitleBox
-            titleTag='h2'
+            titleVariant='heading1'
+            titleComponent='h2'
             title={VIDEO_SECTION_CONTENT.title}
             paragraph={VIDEO_SECTION_CONTENT.paragraph}
           />
@@ -178,7 +184,8 @@ function TabSection() {
         <div className={styles.section_container_inner}>
           <SectionTitleBox
             title='테스트용 탭 영역 단락 입니다'
-            titleTag='h2'
+            titleVariant='heading1'
+            titleComponent='h2'
             paragraph={`면접 과제용으로 제작된 샘플 탭 단락입니다. \n 인터렉션, 코드 구조등을 자유롭게 구현하세요.`}
           />
           <div className={styles.image_tab_wrap}>

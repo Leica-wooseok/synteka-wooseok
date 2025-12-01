@@ -1,0 +1,49 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/breakpoints' as *;
+
+.typography {
+  margin: 0;
+  padding: 0;
+}
+
+// Variant styles
+.heading1 {
+  @include typography-heading1;
+}
+
+.heading2 {
+  @include typography-heading2;
+}
+
+.heading3 {
+  @include typography-heading3;
+}
+
+.paragraph {
+  @include typography-paragraph;
+}
+
+.link {
+  @include typography-link;
+}
+
+.caption {
+  @include typography-caption;
+}
+
+.color-link {
+  color: $color-link;
+}
+
+.color-headline {
+  color: $color-black;
+}
+
+.color-paragraph {
+  color: $color-paragraph;
+}
+
+.color-caption {
+  color: $color-caption;
+}

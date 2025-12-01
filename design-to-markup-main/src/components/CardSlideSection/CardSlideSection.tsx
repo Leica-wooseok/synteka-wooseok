@@ -59,9 +59,10 @@ export default function CardSlideSection() {
         <div className={styles.section_container_inner}>
           <SectionTitleBox
             title='테스트용 이미지 카드 단락입니다'
-            titleTag='h2'
-            titleColor='text-color-caption'
-            paragraphColor='text-color-caption'
+            titleVariant='heading1'
+            titleComponent='h2'
+            titleColor='caption'
+            paragraphColor='caption'
             paragraph={`면접 과제용으로 제작된 샘플 단락입니다. 
  인터렉션, 코드 구조등을 자유롭게 구현하세요. `}
           />
