@@ -1,4 +1,4 @@
-import Card from '@/components/Card/Card';
+import SlideCard from '@/components/Cards/SlideCard';
 import SectionTitleBox from '@/components/SectionTitleBox/SectionTitleBox';
 import { BREAKPOINT_MD } from '@/constants/breakpoints';
 import useDebounceWindowWidth from '@/hooks/useDebounceWindowWidth';
@@ -81,7 +81,11 @@ export default function CardSlideSection() {
           >
             {CARD_SLIDE_CONTENT.map((card) => (
               <SwiperSlide key={card.id} style={{ width: 'auto', height: 'auto' }}>
-                <Card title={card.title} description={card.description} imageSrc={card.imageSrc} />
+                <SlideCard
+                  title={card.title}
+                  description={card.description}
+                  imageSrc={card.imageSrc}
+                />
               </SwiperSlide>
             ))}
           </Swiper>

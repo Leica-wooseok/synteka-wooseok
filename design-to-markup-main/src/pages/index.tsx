@@ -1,5 +1,5 @@
-import CardSlideSection from '@/components/CardSlideSection/CardSlideSection';
 import Header from '@/components/Header/Header';
+import CardSlideSection from '@/sections/CardSlideSection/CardSlideSection';
 import HeroSection from '@/sections/HeroSection/HeroSection';
 import TabSection from '@/sections/TabSection/TabSection';
 import VideoSection from '@/sections/VideoSection/VideoSection';

@@ -1,15 +1,15 @@
-import Image from 'next/image';
-import styles from './Card.module.scss';
 import clsx from 'clsx';
+import Image from 'next/image';
+import styles from './SlideCard.module.scss';
 
-interface CardProps {
+type SlideCardProps = {
   title: string;
   description: string;
   imageSrc: string;
   className?: string;
-}
+};
 
-export default function Card({ title, description, imageSrc, className }: CardProps) {
+export default function SlideCard({ title, description, imageSrc, className }: SlideCardProps) {
   return (
     <div className={clsx(styles.card, className)}>
       <div className={styles.card_image_box}>
