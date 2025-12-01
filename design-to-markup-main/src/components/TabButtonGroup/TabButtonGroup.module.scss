@@ -1,0 +1,53 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.tab_button_group_wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tab_button_group {
+  @include flex-center;
+  position: relative;
+  border-bottom: 2px solid $color-gray;
+}
+
+.tab_button {
+  max-width: 204px;
+  flex: 1;
+  height: 69px;
+  @include flex-center;
+  position: relative;
+  transition: all 0.3s ease;
+
+  &:hover {
+    .tab_button_text {
+      color: darken($color-gray, 10%);
+    }
+  }
+
+  &.active {
+    .tab_button_text {
+      color: $color-dark-green;
+    }
+  }
+}
+
+.tab_button_text {
+  color: $color-gray;
+  @include typography-heading2;
+  transition: color 0.3s ease;
+}
+
+.active_bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  background-color: $color-dark-green;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px 2px 0 0;
+}
