@@ -11,6 +11,7 @@
   background: $color-light-background;
   border-radius: 30px;
   overflow: hidden;
+  border: 1px solid $color-light-gray;
 
   @include max-md {
     width: 230px;
