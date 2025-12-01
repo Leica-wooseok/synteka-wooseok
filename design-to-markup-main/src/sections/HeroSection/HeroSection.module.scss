@@ -24,7 +24,7 @@
   position: relative;
   width: 100%;
   max-width: 907px;
-  aspect-ratio: 907 / 502;
+  aspect-ratio: 907 / 655;
   overflow: hidden;
 
   &::after {
@@ -36,10 +36,11 @@
     height: 100%;
     background: linear-gradient(
       180deg,
-      rgba(255, 255, 255, 0) 37.85%,
-      rgba(255, 255, 255, 0.5) 71.71%,
-      #ffffff 99.2%
+      rgba(255, 255, 255, 0) 29.53%,
+      rgba(255, 255, 255, 0.5) 55.93%,
+      #ffffff 77.25%
     );
+
     pointer-events: none;
     z-index: 1;
   }

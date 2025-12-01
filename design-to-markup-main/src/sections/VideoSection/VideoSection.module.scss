@@ -12,7 +12,10 @@
 }
 
 .video_section {
-  padding-top: 120px;
+  padding-top: 0;
+  @include max-sm {
+    padding-top: 120px;
+  }
 }
 .video_box_wrap {
   @include max-lg {
