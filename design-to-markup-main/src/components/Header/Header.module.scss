@@ -52,6 +52,9 @@ $header-height: 56px;
     & > a {
       color: inherit;
     }
+    & > a:hover {
+      color: $color-dark-green;
+    }
   }
 }
 

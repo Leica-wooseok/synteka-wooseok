@@ -3,21 +3,30 @@
 @use '@/styles/breakpoints' as *;
 
 .filled_button {
-  @include flex-center;
   gap: 6px;
   border-width: $border-width;
   border-style: solid;
   border-radius: 60px;
+  transition: $transition-fast;
+  @include flex-center;
 
   &.primary {
     color: $color-white;
     background: $color-primary;
     border-color: $color-primary;
+
+    &:hover {
+      background: darken($color-primary, 5%);
+    }
   }
   &.gray {
     color: $color-white;
     background: $color-gray;
     border-color: $color-gray;
+
+    &:hover {
+      background: darken($color-gray, 5%);
+    }
   }
   &.size_xl {
     padding: 0 19px;

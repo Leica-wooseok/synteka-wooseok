@@ -1,6 +1,6 @@
 import Card from '@/components/Card/Card';
 import SectionTitleBox from '@/components/SectionTitleBox/SectionTitleBox';
-import { BREAKPOINT_SM } from '@/constants/breakpoints';
+import { BREAKPOINT_MD } from '@/constants/breakpoints';
 import useDebounceWindowWidth from '@/hooks/useDebounceWindowWidth';
 import clsx from 'clsx';
 import 'swiper/css';
@@ -50,8 +50,8 @@ const CARD_SLIDE_CONTENT = [
 
 export default function CardSlideSection() {
   const windowWidth = useDebounceWindowWidth();
-  const isMobile = windowWidth < BREAKPOINT_SM;
-  const slidesOffsetBefore = isMobile ? 46 : 240;
+  const isTablet = windowWidth < BREAKPOINT_MD;
+  const slidesOffsetBefore = isTablet ? 46 : 240;
 
   return (
     <section className={clsx(styles.section, styles.card_slide_section)}>

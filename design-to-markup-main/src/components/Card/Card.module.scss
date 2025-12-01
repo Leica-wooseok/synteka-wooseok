@@ -12,7 +12,7 @@
   border-radius: 30px;
   overflow: hidden;
 
-  @include max-sm {
+  @include max-md {
     width: 230px;
     .card_image_box {
       aspect-ratio: 230 / 218;
