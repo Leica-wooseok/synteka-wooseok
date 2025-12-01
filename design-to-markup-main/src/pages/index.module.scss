@@ -163,6 +163,86 @@
   @include img-fluid;
 }
 
-.image_slide_section {
-  padding-top: 130px;
+.card_slide_section {
+  padding: 130px 0;
+  background-color: $color-light-green;
+
+  :global(.container) {
+    max-width: 100%;
+  }
+}
+
+.card_slide_wrap {
+  margin-top: 80px;
+  width: 100%;
+}
+
+.card_swiper {
+  padding: 0 20px;
+
+  :global(.swiper-wrapper) {
+    display: flex;
+    align-items: stretch; // This will make all slides have the same height
+  }
+}
+
+.card_swiper_pagination {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+
+  :global(.swiper-pagination-bullet) {
+    margin: 0 3px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid $color-primary;
+    background-color: transparent;
+    opacity: 1;
+    transition: background-color 0.3s ease;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: $color-primary;
+  }
+}
+
+.card_slide_item {
+  width: 460px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background: $color-light-background;
+  border-radius: 30px;
+  overflow: hidden;
+
+  & .card_image_box {
+    width: 100%;
+    aspect-ratio: 460 / 436;
+    overflow: hidden;
+    position: relative;
+  }
+
+  & .card_info_box {
+    padding: 35px 30px;
+    gap: 8px;
+    text-align: center;
+    @include flex-column-center;
+    flex-grow: 1;
+  }
+
+  & .card_info_title,
+  & .card_info_description {
+    white-space: pre-line;
+    word-break: keep-all;
+  }
+  & .card_info_title {
+    color: $color-caption;
+    @include typography-heading2;
+  }
+
+  & .card_info_description {
+    color: $color-paragraph;
+    @include typography-paragraph;
+  }
 }
