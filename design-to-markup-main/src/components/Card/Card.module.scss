@@ -1,0 +1,46 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/breakpoints' as *;
+
+.card {
+  width: 460px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background: $color-light-background;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.card_image_box {
+  width: 100%;
+  aspect-ratio: 460 / 436;
+  overflow: hidden;
+  position: relative;
+}
+
+.card_info_box {
+  padding: 35px 30px;
+  gap: 8px;
+  text-align: center;
+  @include flex-column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.card_info_title,
+.card_info_description {
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+.card_info_title {
+  color: $color-caption;
+  @include typography-heading2;
+}
+
+.card_info_description {
+  color: $color-paragraph;
+  @include typography-paragraph;
+}
