@@ -10,6 +10,10 @@
   transition: $transition-fast;
   @include flex-center;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &.primary {
     color: $color-white;
     background: $color-primary;
@@ -60,12 +64,16 @@
     line-height: 1.8;
     letter-spacing: $letter-spacing-00;
   }
-  &:hover {
-  }
-  &:disabled {
+
+  &:disabled,
+  &:hover:disabled {
     background: $color-light-gray;
+    border-color: $color-light-gray;
+    cursor: default;
   }
   & .button_icon {
     color: inherit;
+    line-height: 1;
+    @include flex-center;
   }
 }
