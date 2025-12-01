@@ -11,6 +11,7 @@ export default function Document() {
           type='font/woff2'
           crossOrigin='anonymous'
         />
+        <title>Synteka Bio</title>
         <meta name='description' content='Synteka Bio Test Page for interview assignment' />
         <meta
           name='keywords'
