@@ -27,19 +27,28 @@ const TAB_CONTENT = [
   {
     id: 1,
     label: '탭 영역 1',
-    imageSrc: '/images/tabs/tab_1_desktop.png',
+    image: {
+      desktop: { src: '/images/tabs/tab_1_desktop.png', width: 892, height: 620 },
+      mobile: { src: '/images/tabs/tab_1_mobile.png', width: 361, height: 385 },
+    },
     alt: '탭 영역 1 이미지입니다',
   },
   {
     id: 2,
     label: '탭 영역 2',
-    imageSrc: '/images/tabs/tab_2_desktop.png',
+    image: {
+      desktop: { src: '/images/tabs/tab_2_desktop.png', width: 892, height: 620 },
+      mobile: { src: '/images/tabs/tab_2_mobile.png', width: 361, height: 385 },
+    },
     alt: '탭 영역 2 이미지입니다',
   },
   {
     id: 3,
     label: '탭 영역 3',
-    imageSrc: '/images/tabs/tab_3_desktop.png',
+    image: {
+      desktop: { src: '/images/tabs/tab_3_desktop.png', width: 892, height: 620 },
+      mobile: { src: '/images/tabs/tab_3_mobile.png', width: 361, height: 385 },
+    },
     alt: '탭 영역 3 이미지입니다',
   },
 ] as const;
@@ -126,10 +135,41 @@ function VideoSection() {
   );
 }
 
+function TabImage({
+  content,
+  isMobile,
+  isActive,
+}: {
+  content: (typeof TAB_CONTENT)[number];
+  isMobile: boolean;
+  isActive: boolean;
+}) {
+  const image = isMobile ? content.image.mobile : content.image.desktop;
+  return (
+    <div
+      className={clsx(styles.tab_content, {
+        [styles.hidden]: !isActive,
+      })}
+    >
+      <div className={styles.tab_content_image_box}>
+        <Image
+          key={isMobile ? 'mobile' : 'desktop'}
+          src={image.src}
+          alt={content.alt}
+          width={image.width}
+          height={image.height}
+          className={styles.tab_content_image}
+          priority={isActive}
+        />
+      </div>
+    </div>
+  );
+}
+
 function TabSection() {
   const [activeTab, setActiveTab] = useState(1);
-  const windowWidth = useDebounceWindowWidth(); // Use the hook
-  const isMobile = windowWidth < BREAKPOINT_SM; // Determine isMobile
+  const windowWidth = useDebounceWindowWidth();
+  const isMobile = windowWidth < BREAKPOINT_SM;
 
   return (
     <section className={clsx(styles.section, styles.image_tab_section)}>
@@ -148,34 +188,14 @@ function TabSection() {
             />
 
             <div className={styles.tab_content_container}>
-              {TAB_CONTENT.map((content) => {
-                const dynamicImageSrc = isMobile
-                  ? content.imageSrc.replace('_desktop.png', '_mobile.png')
-                  : content.imageSrc;
-
-                const imageWidth = isMobile ? 361 : 892;
-                const imageHeight = isMobile ? 385 : 620;
-
-                return (
-                  <div
-                    key={content.id}
-                    className={clsx(styles.tab_content, {
-                      [styles.hidden]: activeTab !== content.id,
-                    })}
-                  >
-                    <div className={styles.tab_content_image_box}>
-                      <Image
-                        src={dynamicImageSrc}
-                        alt={content.alt}
-                        width={imageWidth}
-                        height={imageHeight}
-                        className={styles.tab_content_image}
-                        priority={activeTab === content.id}
-                      />
-                    </div>
-                  </div>
-                );
-              })}
+              {TAB_CONTENT.map((content) => (
+                <TabImage
+                  key={content.id}
+                  content={content}
+                  isMobile={isMobile}
+                  isActive={activeTab === content.id}
+                />
+              ))}
             </div>
           </div>
         </div>
