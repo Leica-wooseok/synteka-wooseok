@@ -128,8 +128,8 @@ function VideoSection() {
 
 function TabSection() {
   const [activeTab, setActiveTab] = useState(1);
-
-  const activeContent = TAB_CONTENT.find((tab) => tab.id === activeTab);
+  const windowWidth = useDebounceWindowWidth(); // Use the hook
+  const isMobile = windowWidth < BREAKPOINT_SM; // Determine isMobile
 
   return (
     <section className={clsx(styles.section, styles.image_tab_section)}>
@@ -148,25 +148,34 @@ function TabSection() {
             />
 
             <div className={styles.tab_content_container}>
-              {TAB_CONTENT.map((content) => (
-                <div
-                  key={content.id}
-                  className={clsx(styles.tab_content, {
-                    [styles.hidden]: activeTab !== content.id,
-                  })}
-                >
-                  <div className={styles.tab_content_image_box}>
-                    <Image
-                      src={content.imageSrc}
-                      alt={content.alt}
-                      width={892}
-                      height={620}
-                      className={styles.tab_content_image}
-                      priority={activeTab === content.id}
-                    />
+              {TAB_CONTENT.map((content) => {
+                const dynamicImageSrc = isMobile
+                  ? content.imageSrc.replace('_desktop.png', '_mobile.png')
+                  : content.imageSrc;
+
+                const imageWidth = isMobile ? 361 : 892;
+                const imageHeight = isMobile ? 385 : 620;
+
+                return (
+                  <div
+                    key={content.id}
+                    className={clsx(styles.tab_content, {
+                      [styles.hidden]: activeTab !== content.id,
+                    })}
+                  >
+                    <div className={styles.tab_content_image_box}>
+                      <Image
+                        src={dynamicImageSrc}
+                        alt={content.alt}
+                        width={imageWidth}
+                        height={imageHeight}
+                        className={styles.tab_content_image}
+                        priority={activeTab === content.id}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

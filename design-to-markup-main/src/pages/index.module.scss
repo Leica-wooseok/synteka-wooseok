@@ -103,6 +103,10 @@
   margin-top: 80px;
   width: 100%;
   @include flex-column-center;
+
+  @include max-sm {
+    margin-top: 40px;
+  }
 }
 
 .tab_button_group_width {
@@ -114,6 +118,11 @@
   width: 100%;
   max-width: 892px;
   aspect-ratio: 892 / 620;
+
+  @include max-sm {
+    margin-top: 40px;
+    aspect-ratio: 361 / (385 - 32);
+  }
 }
 
 .tab_content {
@@ -143,6 +152,10 @@
   max-width: 892px;
   overflow: hidden;
   aspect-ratio: 892 / 620;
+  @include max-sm {
+    max-width: 361px;
+    aspect-ratio: 361 / 385;
+  }
 }
 
 .tab_content_image {

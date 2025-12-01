@@ -1,3 +1,4 @@
+import useDebounceWindowWidth from '@/hooks/useDebounceWindowWidth';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import styles from './TabButtonGroup.module.scss';
@@ -22,6 +23,7 @@ export default function TabButtonGroup({
 }: TabButtonGroupProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [barStyle, setBarStyle] = useState({ left: 0, width: 0 });
+  const windowWidth = useDebounceWindowWidth();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -39,7 +41,7 @@ export default function TabButtonGroup({
         width: buttonRect.width,
       });
     }
-  }, [activeTab, tabs]);
+  }, [activeTab, tabs, windowWidth]);
 
   return (
     <div className={clsx(styles.tab_button_group_wrapper, className)}>
