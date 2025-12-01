@@ -4,13 +4,24 @@
 
 .card {
   width: 460px;
-  height: auto;
+  height: 100%;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   background: $color-light-background;
   border-radius: 30px;
   overflow: hidden;
+
+  @include max-sm {
+    width: 230px;
+    .card_image_box {
+      aspect-ratio: 230 / 218;
+    }
+    .card_info_box {
+      padding: 18px;
+      gap: 4px;
+    }
+  }
 }
 
 .card_image_box {
