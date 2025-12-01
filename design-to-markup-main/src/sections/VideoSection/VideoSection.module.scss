@@ -1,0 +1,33 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/breakpoints' as *;
+
+.section {
+  // section 스타일 작성
+  padding-top: 120px;
+}
+
+.section_container_inner {
+  @include flex-column-center;
+}
+
+.video_section {
+  padding-top: 120px;
+}
+.video_box_wrap {
+  @include max-lg {
+    padding: 0 16px;
+  }
+}
+.video_box {
+  margin-top: 80px;
+  border-radius: 30px;
+  max-width: 892px;
+  aspect-ratio: 892 / 504;
+  overflow: hidden;
+
+  @include max-lg {
+    margin-top: 40px;
+    aspect-ratio: 361 / 204;
+  }
+}
