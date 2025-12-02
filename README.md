@@ -82,8 +82,7 @@
 #### useDebounceWindowWidth Hook
 
 - **목적**: resize 이벤트 시 불필요한 리렌더링 방지
-- **이중 최적화 전략**:
-  - `requestAnimationFrame`: 즉각적인 반응 (60fps 동기화)
+- **최적화 전략**:
   - `debounce`: 300ms 후 최종 업데이트로 리렌더링 최소화
 - **SSR 대응**: window 객체 체크로 서버/클라이언트 환경 모두 지원
 
@@ -105,16 +104,27 @@
 
 #### Breakpoints
 
-- Desktop: 1024px 이상
-- Tablet: 768px ~ 1023px
-- Mobile: 767px 이하
-- 커스텀 breakpoint 상수 (`breakpoints.ts`)
+- Extra Small: ~374px (`$breakpoint-xs: 375px`)
+- Small: ~429px (`$breakpoint-sm: 430px`)
+- Medium: ~767px (`$breakpoint-md: 768px`)
+- Large (Desktop): 1100px 이상 (`$breakpoint-lg: 1100px`)
+- 커스텀 breakpoint 상수 (`breakpoints.ts`, `breakpoints.scss`)
 
 #### Color System
 
-- Primary: #00D563 (Green)
-- Grayscale: Black, Gray, Light Gray
-- Semantic colors: Link, Headline, Paragraph, Caption
+- **Primary Colors**:
+  - Dark Green: `#485c11` (Primary Color, Caption)
+  - Green: `#8e9c78`
+  - Light Green: `#dfecc6`
+- **Grayscale**:
+  - Black: `#000`
+  - Gray: `#929292`
+  - Light Gray: `#e9e9e9`
+  - White: `#fff`
+- **Text Colors**:
+  - Link: `#000` (Black)
+  - Paragraph: `#6f6f6f`
+  - Caption: `#485c11` (Dark Green)
 
 ### 5. 개발 환경
 
