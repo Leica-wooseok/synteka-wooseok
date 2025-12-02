@@ -13,7 +13,6 @@ $header-height: 56px;
   display: flex;
   align-items: center;
   background: $color-light-background;
-  transition: $transition-fast;
   z-index: 99;
 
   @include max-lg {
@@ -27,6 +26,7 @@ $header-height: 56px;
     background: rgba($color: $color-light-background, $alpha: 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    transition: $transition-fast;
   }
   &.header_open {
     box-shadow: none;

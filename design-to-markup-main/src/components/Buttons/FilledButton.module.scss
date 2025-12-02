@@ -2,6 +2,13 @@
 @use '@/styles/mixins' as *;
 @use '@/styles/breakpoints' as *;
 
+@mixin button-text-base {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-200;
+  letter-spacing: $letter-spacing-00;
+}
+
 .filled_button {
   gap: 6px;
   border-width: $border-width;
@@ -35,26 +42,17 @@
   &.size_xl {
     padding: 0 19px;
     height: 56px;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-bold;
-    line-height: $line-height-200;
-    letter-spacing: $letter-spacing-00;
+    @include button-text-base;
   }
   &.size_lg {
     padding: 0 14px;
     height: 48px;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-bold;
-    line-height: $line-height-200;
-    letter-spacing: $letter-spacing-00;
+    @include button-text-base;
   }
   &.size_md {
     padding: 0 14px;
     height: 40px;
-    font-size: $font-size-sm;
-    font-weight: $font-weight-bold;
-    line-height: $line-height-200;
-    letter-spacing: $letter-spacing-00;
+    @include button-text-base;
   }
   &.size_sm {
     padding: 0 10px;

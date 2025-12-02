@@ -30,9 +30,6 @@ export default function SectionTitleBox({
       <Typography variant='paragraph' color={paragraphColor || 'paragraph'}>
         {paragraph}
       </Typography>
-      {/* <p className={clsx('typo-paragraph', paragraphColor || 'text-color-paragraph')}>
-        {paragraph}
-      </p> */}
     </div>
   );
 }

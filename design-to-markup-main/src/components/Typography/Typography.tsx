@@ -26,7 +26,6 @@ const Typography: React.FC<TypographyProps> = ({
   className = '',
   children,
 }) => {
-  // Determine the default HTML element based on variant
   const getDefaultComponent = (): React.ElementType => {
     switch (variant) {
       case 'heading1':
@@ -47,7 +46,6 @@ const Typography: React.FC<TypographyProps> = ({
 
   const Component = component || getDefaultComponent();
 
-  // Build class names
   const classNames = [
     styles.typography,
     styles[variant],
